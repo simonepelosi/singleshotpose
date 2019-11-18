@@ -17,7 +17,7 @@ from torchvision import datasets, transforms
 from torch.autograd import Variable # Useful info about autograd: http://pytorch.org/docs/master/notes/autograd.html
 
 from darknet_multi import Darknet
-from MeshPly import MeshPly
+from Mesh import Mesh
 from utils_multi import *    
 from cfg import parse_cfg
 from region_loss_multi import RegionLoss
@@ -133,7 +133,7 @@ def eval(niter, datacfg):
     backupdir     = options['backup']
     name          = options['name']
     # Read object model information, get 3D bounding box corners
-    mesh          = MeshPly(meshname)
+    mesh          = Mesh(meshname)
     vertices      = np.c_[np.array(mesh.vertices), np.ones((len(mesh.vertices), 1))].transpose()
     corners3D     = get_3D_corners(vertices)
     # Read intrinsic camera parameters

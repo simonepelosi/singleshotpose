@@ -1,4 +1,6 @@
 # Class to read 
+import json
+
 class Mesh:
     def __init__(self, filename, color=[0., 0., 0.]):
 

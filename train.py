@@ -20,7 +20,7 @@ from utils import *
 from cfg import parse_cfg
 from region_loss import RegionLoss
 from darknet import Darknet
-from MeshPly import MeshPly
+from Mesh import Mesh
 
 import warnings
 warnings.filterwarnings("ignore")
@@ -356,7 +356,7 @@ if __name__ == "__main__":
     testing_accuracies      = []
 
     # Get the intrinsic camerea matrix, mesh, vertices and corners of the model
-    mesh                 = MeshPly(meshname)
+    mesh                 = Mesh(meshname)
     vertices             = np.c_[np.array(mesh.vertices), np.ones((len(mesh.vertices), 1))].transpose()
     corners3D            = get_3D_corners(vertices)
     internal_calibration = get_camera_intrinsic(u0, v0, fx, fy)

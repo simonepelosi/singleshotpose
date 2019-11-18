@@ -10,7 +10,7 @@ from torchvision import datasets, transforms
 import dataset
 from darknet import Darknet
 from utils import *
-from MeshPly import MeshPly
+from Mesh import Mesh
 
 def valid(datacfg, modelcfg, weightfile):
     def truths_length(truths, max_num_gt=50):
@@ -63,7 +63,7 @@ def valid(datacfg, modelcfg, weightfile):
     gts_corners2D       = []
 
     # Read object model information, get 3D bounding box corners
-    mesh      = MeshPly(meshname)
+    mesh      = Mesh(meshname)
     vertices  = np.c_[np.array(mesh.vertices), np.ones((len(mesh.vertices), 1))].transpose()
     corners3D = get_3D_corners(vertices)
     try:

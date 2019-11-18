@@ -14,7 +14,7 @@ import dataset_multi
 from darknet_multi import Darknet
 from utils_multi import *
 from cfg import parse_cfg
-from MeshPly import MeshPly
+from Mesh import Mesh
 
 def valid(datacfg, cfgfile, weightfile):
     def truths_length(truths):
@@ -44,7 +44,7 @@ def valid(datacfg, cfgfile, weightfile):
     anchors       = [float(anchor) for anchor in loss_options['anchors'].split(',')]
 
     # Read object model information, get 3D bounding box corners, get intrinsics
-    mesh                  = MeshPly(meshname)
+    mesh                  = Mesh(meshname)
     vertices              = np.c_[np.array(mesh.vertices), np.ones((len(mesh.vertices), 1))].transpose()
     corners3D             = get_3D_corners(vertices)
     diam                  = float(data_options['diam'])
